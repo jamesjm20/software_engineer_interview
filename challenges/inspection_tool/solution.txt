@@ -1,0 +1,138 @@
+1. What technologies would you use?
+
+Backend: FastAPI, SQLAlchemy, MySQL, AWS S3
+Frontend: Vue.js
+Other Tools: Docker, Tool for pdf generation (python reportlab?)
+
+2. Provide an architecture breakdown of the solution.
+
+Frontend:
+
+Vue.js: Manages UI.
+
+Backend:
+
+FastAPI: Handles API endpoints, image uploads, and PDF generation.
+SQLAlchemy: Manages database operations.
+MySQL: Stores metadata and references.
+AWS S3: Stores images.
+
+3. Provide a folder tree structure of the repository/repositories.
+
+/inspection-tool
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── routes/
+│   │   │   ├── __init__.py
+│   │   │   ├── assessments.py
+│   │   │   └── assets.py
+│   │   ├── services.py
+│   │   ├── database.py
+│   │   └── config.py
+│   ├── Dockerfile
+│   ├── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── AssetForm.vue
+│   │   │   ├── ImageUploader.vue
+│   │   │   └── ReportViewer.vue
+│   │   ├── router/
+│   │   │   └── index.js
+│   │   ├── store/
+│   │   │   └── index.js
+│   │   ├── views/
+│   │   │   ├── Home.vue
+│   │   │   ├── Assessment.vue
+│   │   │   └── Report.vue
+│   │   ├── App.vue
+│   │   └── main.js
+│   ├── Dockerfile
+│   ├── package.json
+│   └── vue.config.js
+├── docker-compose.yml
+└── README.md
+
+4. What testing approach would you use?
+
+Unit Testing: pytest for backend, Jest for frontend.
+Integration Testing: pytest for API, Cypress for end-to-end testing.
+Mocking: Use unittest.mock for Python.
+
+5. How would you deploy the application?
+
+Docker: Containerise backend and frontend.
+Orchestration: Use docker-compose.
+Cloud: Deploy on AWS ECS (backend) and use AWS S3 for images.
+
+6. What risks do you foresee?
+
+Data security and privacy
+Data integrity - backup dbs to mitigate risk. 
+scalability and performance
+Possible compliance and regulatory risks
+Dependency management (possible deprecation of tool for pdf generation?)
+Security - SQL injection, CSRF
+CI/CD Issues - Rollback plans for deployments
+Error handling - have tools in place to manage and organise issues (Sentry, Opsgenie)
+
+7. How would you define the development lifecycle?
+
+Planning: Understand and define project requirements.
+Design: Design architecture and UI.
+Development: Develop full functionalities and integrate components
+Testing: Perform thorough testing of all components.
+Deployment: Deploy to production environment.
+Maintenance: Maintain the application.
+
+8. Provide a month-by-month schedule of development tasks (titles of tasks only) with the assignment to developers.
+
+Month 1:
+Week 1:
+
+Dev 1: Set up FastAPI project and configure database models with SQLAlchemy.
+Dev 2: Create API endpoints and basic routes in FastAPI.
+Dev 3: Set up the Vue.js project structure, including the basic components and routing.
+
+Week 2:
+
+Dev 1: Implement form submission, validation, and endpoint handling in FastAPI.
+Dev 2: Handle API integration and testing for endpoints in FastAPI.
+Dev 3: Develop and style form components in Vue.js, including form validation.
+
+Week 3:
+
+Dev 1: Implement image upload functionality and integrate AWS S3 for storage in FastAPI.
+Dev 2: Set up AWS S3 bucket, configure permissions, and handle image uploads in FastAPI.
+Dev 3: Develop the frontend image upload component in Vue.js and integrate it with the API.
+
+Month 2:
+Week 4:
+
+Dev 1: Develop PDF generation service using a Python library (e.g., ReportLab) and integrate with FastAPI.
+Dev 2: Integrate PDF generation functionality with FastAPI endpoints and perform initial testing.
+Dev 3: Implement frontend for PDF generation and viewing in Vue.js.
+
+Week 5:
+
+Dev 1: Write unit tests for FastAPI components and database interactions.
+Dev 2: Write integration tests for FastAPI services and API endpoints.
+Dev 3: Write unit tests for Vue.js components and frontend logic.
+
+Week 6:
+
+Dev 1: Perform end-to-end testing using tools like Cypress for the complete application flow.
+Dev 2: Address and fix bugs identified during testing and optimise backend performance.
+Dev 3: Conduct user acceptance testing (UAT) and gather feedback.
+
+Week 7:
+
+All Devs: Finalise testing, address any remaining issues, and ensure application stability.
+
+Week 8:
+
+All Devs: Prepare Docker containers for both backend and frontend, deploy to cloud infrastructure (e.g., AWS), and finalise documentation for deployment and usage.
